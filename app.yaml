@@ -1,0 +1,19 @@
+runtime: nodejs16
+
+handlers:
+  # Serve static files for frontend
+  - url: /assets
+    static_dir: frontend/assets
+
+  - url: /css
+    static_dir: frontend/css
+
+  # Catch-all to serve the main HTML file
+  - url: /
+    static_files: frontend/index.html
+    upload: frontend/index.html
+
+  # Backend handler
+  - url: /download-cv
+    script: auto
+
