@@ -13,7 +13,7 @@ env_variables:
 # Entry point to start the app
 entrypoint: node index.js
 
-# Static file handlers (for serving CSS, JavaScript, images, etc.)
+# Static file handlers (for serving static assets like CSS, JavaScript, images)
 handlers:
   - url: /assets
     static_dir: assets
@@ -21,7 +21,8 @@ handlers:
   - url: /css
     static_dir: css
 
-  - url: /.*
-    script: auto  
-    # Routes all other URLs to your Node.js app
+  - url: /CV
+    static_dir: CV
 
+  - url: /.* 
+    script: auto 
