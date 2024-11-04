@@ -22,5 +22,6 @@ handlers:
     static_dir: css
 
   - url: /.*
-    script: auto  # Routes all other URLs to your Node.js app
+    script: auto  
+    # Routes all other URLs to your Node.js app
 
