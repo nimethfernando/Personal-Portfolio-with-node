@@ -1,0 +1,43 @@
+name: Deploy to GCP
+
+on:
+  push:
+    branches:
+      - main  # Deploys when changes are pushed to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.4
+      with:
+        ssh-private-key: ${{ secrets.GCP_SSH_PRIVATE_KEY }}
+
+    - name: Deploy to GCP VM
+      env:
+        GCP_VM_IP: ${{ secrets.GCP_VM_IP }}
+        GCP_VM_USER: ${{ secrets.GCP_VM_USER }}
+        GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
+      run: |
+        # Connect to GCP VM and pull the latest code
+        ssh -o StrictHostKeyChecking=no $GCP_VM_USER@$GCP_VM_IP << 'EOF'
+          # Navigate to the project directory or clone if not present
+          cd ~/Personal-Portfolio-with-node || git clone https://github.com/${GITHUB_REPOSITORY}.git ~/Personal-Portfolio-with-node
+          cd ~/Personal-Portfolio-with-node
+
+          # Pull the latest changes
+          git pull origin main
+
+          # Install dependencies and restart the app
+          cd backend
+          npm install
+          pm2 restart portfolio-backend || pm2 start index.js --name portfolio-backend
+
+          # Reload Nginx to apply any new changes to the configuration
+          sudo systemctl reload nginx
+        EOF
