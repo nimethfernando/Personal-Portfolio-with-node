@@ -558,3 +558,67 @@ span {
         margin-top: 2rem;
     }
 }
+
+
+/* Adjusting font size and padding for smoother scaling */
+@media (max-width: 768px) {
+    .home-content h1 {
+        font-size: 3.5rem;
+    }
+    .home-content h3, .home-content h4 {
+        font-size: 2rem;
+    }
+    .about-content h3, .projects-layer h4 {
+        font-size: 2.4rem;
+    }
+    .about-content p {
+        font-size: 1.4rem;
+    }
+}
+
+/* Mobile navbar styling */
+.navbar ul {
+    padding: 2rem 0;
+    text-align: center;
+}
+.navbar ul li {
+    display: block;
+    margin: 1.5rem 0;
+}
+.navbar ul li a {
+    font-size: 2rem;
+    color: #fff;
+}
+
+/* Fade-in animation for sections */
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.home-img img, .about-img img {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
+}
+
+.social-media {
+    justify-content: center;
+}
+.contact-info, .footer-text, .projects-layer {
+    text-align: center;
+}
+
+.btn {
+    font-size: 1.8rem;
+    padding: 1.5rem 3.5rem;
+}
+.btn:hover {
+    background: #75b2d7;
+}
