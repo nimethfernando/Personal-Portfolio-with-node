@@ -576,19 +576,7 @@ span {
     }
 }
 
-/* Mobile navbar styling */
-.navbar ul {
-    padding: 2rem 0;
-    text-align: center;
-}
-.navbar ul li {
-    display: block;
-    margin: 1.5rem 0;
-}
-.navbar ul li a {
-    font-size: 2rem;
-    color: #fff;
-}
+
 
 /* Fade-in animation for sections */
 section {
