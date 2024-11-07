@@ -622,3 +622,40 @@ section.show {
 .btn:hover {
     background: #75b2d7;
 }
+
+/* Default padding for desktop */
+.header {
+    padding: 1.5rem 7%; /* Adjusted for balanced look on larger screens */
+}
+
+/* Medium screens */
+@media (max-width: 992px) {
+    .header {
+        padding: 1.5rem 5%; /* Reduced padding */
+    }
+    nav ul li a {
+        margin-left: 3rem;
+    }
+}
+
+/* Tablets and smaller screens */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem 4%; /* Further reduce padding */
+    }
+    nav ul li a {
+        margin-left: 2rem;
+        padding: 1rem; /* Reducing padding for better fit */
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 576px) {
+    .header {
+        padding: 1rem 3%; /* Minimal padding for small screens */
+    }
+    nav ul li a {
+        margin-left: 1rem;
+        padding: 0.8rem; /* Optimized for small devices */
+    }
+}
