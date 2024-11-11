@@ -22,12 +22,11 @@ jobs:
       env:
         GCP_VM_IP: ${{ secrets.GCP_VM_IP }}
         GCP_VM_USER: ${{ secrets.GCP_VM_USER }}
-        GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
       run: |
         # Connect to GCP VM and pull the latest code
         ssh -o StrictHostKeyChecking=no $GCP_VM_USER@$GCP_VM_IP << 'EOF'
           # Navigate to the project directory or clone if not present
-          cd ~/Personal-Portfolio-with-node || git clone https://github.com/${GITHUB_REPOSITORY}.git ~/Personal-Portfolio-with-node
+          cd ~/Personal-Portfolio-with-node || git clone https://github.com/${{ github.repository }}.git ~/Personal-Portfolio-with-node
           cd ~/Personal-Portfolio-with-node
 
           # Pull the latest changes
